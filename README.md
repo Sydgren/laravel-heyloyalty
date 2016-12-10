@@ -1,2 +1,3 @@
-# laravel-heyloyalty
-Client library for HeyLoyalty for Laravel
+# HeyLoyalty Laravel Client
+
+...
