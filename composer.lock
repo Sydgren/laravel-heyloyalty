@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e36dfa04a5610e22eaeccd3e2a0c7492",
-    "content-hash": "22e4605ce33e71806ac01c1c77ab1606",
+    "hash": "29f4fb6b4002c586fb17d816da039327",
+    "content-hash": "596f3d32e27ae526b32eb7310a4e8484",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -1773,12 +1773,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "7ad84777f7e3e88450049dd5b5ae08e4fd1023d0"
+                "reference": "f8c054eea2921142bed49cc957260652f80958e3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/7ad84777f7e3e88450049dd5b5ae08e4fd1023d0",
-                "reference": "7ad84777f7e3e88450049dd5b5ae08e4fd1023d0",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/f8c054eea2921142bed49cc957260652f80958e3",
+                "reference": "f8c054eea2921142bed49cc957260652f80958e3",
                 "shasum": ""
             },
             "require": {
@@ -1820,7 +1820,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2016-12-08 15:31:48"
+            "time": "2016-12-13 09:39:51"
         },
         {
             "name": "webmozart/assert",
