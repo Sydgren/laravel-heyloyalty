@@ -3,6 +3,11 @@ namespace Sydgren\HeyLoyalty;
 
 use Illuminate\Support\ServiceProvider;
 
+/**
+ * HeyLoyalty API Client Service Provider.
+ *
+ * @package Sydgren\HeyLoyalty
+ */
 class HeyLoyaltyServiceProvider extends ServiceProvider
 {
 
