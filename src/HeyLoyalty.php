@@ -64,7 +64,7 @@ class HeyLoyalty
      */
     public function subscribe($list_id, $data)
     {
-        // TODO: Add code
+        $this->members->create($list_id, $data);
     }
 
     /**
@@ -75,7 +75,7 @@ class HeyLoyalty
      */
     public function unsubscribe($list_id, $member_id)
     {
-        // TODO: Add code
+        $this->members->delete($list_id, $member_id);
     }
 
     /**
@@ -88,7 +88,7 @@ class HeyLoyalty
      */
     public function update($list_id, $member_id, $data)
     {
-        // TODO: Add code
+        $this->members->update($list_id, $member_id, $data);
     }
 
     /**
@@ -100,7 +100,13 @@ class HeyLoyalty
      */
     public function findByEmail($list_id, $email)
     {
-        // TODO: Add code
+        $members = json_decode($this->members->getMemberByEmail($list_id, $email)['response']);
+
+        if (! $members->total) {
+            return [];
+        }
+
+        return $members->members;
     }
 
     /**
@@ -108,10 +114,14 @@ class HeyLoyalty
      *
      * @param $list_id
      * @param $member_id
+     * @return object
      */
     public function find($list_id, $member_id)
     {
-        // TODO: Add code
+        // TODO: Test this - not sure about response format
+        $members = json_decode($this->members->getMemberByEmail($list_id, $member_id)['response']);
+
+        return $members;
     }
 }
 
