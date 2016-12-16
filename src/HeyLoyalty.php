@@ -17,7 +17,7 @@ class HeyLoyalty
      *
      * @var string
      */
-    protected $api_key;
+    protected $apiKey;
 
     /**
      * API secret
@@ -41,7 +41,7 @@ class HeyLoyalty
      */
     public function __construct()
     {
-        $this->api_key = Config::get('heyloyalty.api_key');
+        $this->apiKey = Config::get('heyloyalty.api_key');
         $this->secret = Config::get('heyloyalty.secret');
 
         $this->setupClient();
@@ -52,55 +52,55 @@ class HeyLoyalty
      */
     private function setupClient()
     {
-        $this->client = new HLClient($this->api_key, $this->secret);
+        $this->client = new HLClient($this->apiKey, $this->secret);
         $this->members = new HLMembers($this->client);
     }
 
     /**
      * Subscribes a member to a list.
      *
-     * @param integer $list_id
+     * @param integer $listId
      * @param array $data
      */
-    public function subscribe($list_id, $data)
+    public function subscribe($listId, $data)
     {
-        $this->members->create($list_id, $data);
+        $this->members->create($listId, $data);
     }
 
     /**
      * Unsubscribes a member from a list.
      *
-     * @param integer $list_id
-     * @param string $member_id
+     * @param integer $listId
+     * @param string $memberId
      */
-    public function unsubscribe($list_id, $member_id)
+    public function unsubscribe($listId, $memberId)
     {
-        $this->members->delete($list_id, $member_id);
+        $this->members->delete($listId, $memberId);
     }
 
     /**
      * Updates a member.
      * (Best used with Smart Update set to On)
      *
-     * @param $list_id
-     * @param $member_id
+     * @param $listId
+     * @param $memberId
      * @param $data
      */
-    public function update($list_id, $member_id, $data)
+    public function update($listId, $memberId, $data)
     {
-        $this->members->update($list_id, $member_id, $data);
+        $this->members->update($listId, $memberId, $data);
     }
 
     /**
      * Finds members by email.
      *
-     * @param $list_id
+     * @param $listId
      * @param $email
      * @return array
      */
-    public function findByEmail($list_id, $email)
+    public function findByEmail($listId, $email)
     {
-        $members = json_decode($this->members->getMemberByEmail($list_id, $email)['response']);
+        $members = json_decode($this->members->getMemberByEmail($listId, $email)['response']);
 
         if (! $members->total) {
             return [];
@@ -112,14 +112,14 @@ class HeyLoyalty
     /**
      * Finds member by HeyLoyalty member id.
      *
-     * @param $list_id
-     * @param $member_id
+     * @param $listId
+     * @param $memberId
      * @return object
      */
-    public function find($list_id, $member_id)
+    public function find($listId, $memberId)
     {
         // TODO: Test this - not sure about response format
-        $members = json_decode($this->members->getMemberByEmail($list_id, $member_id)['response']);
+        $members = json_decode($this->members->getMemberByEmail($listId, $memberId)['response']);
 
         return $members;
     }
