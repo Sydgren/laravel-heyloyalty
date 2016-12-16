@@ -118,10 +118,8 @@ class HeyLoyalty
      */
     public function find($listId, $memberId)
     {
-        // TODO: Test this - not sure about response format
-        $members = json_decode($this->members->getMemberByEmail($listId, $memberId)['response']);
+        $member = json_decode($this->members->getMemberByEmail($listId, $memberId)['response']);
 
-        return $members;
+        return $member;
     }
 }
-
