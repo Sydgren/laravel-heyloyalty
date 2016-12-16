@@ -1,4 +1,5 @@
 <?php
+namespace Sydgren\HeyLoyalty;
 
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Config;
@@ -23,19 +24,19 @@ trait SubscribesToHeyLoyalty
      */
     public function subscribe()
     {
-        if($this->getHLMemberId()) {
+        if ($this->getHLMemberId()) {
             return false;
         }
 
-        $member_data = [];
+        $memberData = [];
 
-        foreach($this->heyloyalty_fields as $model_key => $hl_key) {
-            $member_data[$hl_key] = $this->$model_key;
+        foreach ($this->heyloyalty_ields as $modelKey => $hlKey) {
+            $memberData[$hlKey] = $this->$modelKey;
         }
 
-        HeyLoyalty::subscribe(Config::get('heyloyalty.list_id'), $member_data);
+        HeyLoyalty::subscribe(Config::get('heyloyalty.list_id'), $memberData);
 
-        Log::info('HeyLoyalty member subscribed', [$member_data]);
+        Log::info('HeyLoyalty member subscribed', [$memberData]);
 
         return true;
     }
@@ -95,15 +96,15 @@ trait SubscribesToHeyLoyalty
             return false;
         }
 
-        $member_data = [];
+        $memberData = [];
 
-        foreach($this->heyloyalty_fields as $model_key => $hl_key) {
-            $member_data[$hl_key] = $this->$model_key;
+        foreach ($this->heyloyalty_fields as $modelKey => $hlKey) {
+            $memberData[$hlKey] = $this->$modelKey;
         }
 
-        HeyLoyalty::update(Config::get('heyloyalty.list_id'), $id, $member_data);
+        HeyLoyalty::update(Config::get('heyloyalty.list_id'), $id, $memberData);
 
-        Log::info('HeyLoyalty member updated', [$this->email,$member_data]);
+        Log::info('HeyLoyalty member updated', [$this->email,$memberData]);
 
         return true;
     }
