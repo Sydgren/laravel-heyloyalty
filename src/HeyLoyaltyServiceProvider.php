@@ -18,7 +18,9 @@ class HeyLoyaltyServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->publishes([
+            __DIR__.'/config/heyloyalty.php' => config_path('heyloyalty.php')
+        ], 'config');
     }
 
     /**
