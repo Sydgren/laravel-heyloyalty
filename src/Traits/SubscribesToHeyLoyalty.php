@@ -90,7 +90,7 @@ trait SubscribesToHeyLoyalty
      *
      * @return bool
      */
-    public function update()
+    public function updateHL()
     {
         if (! $id = $this->getHLMemberId()) {
             return false;
