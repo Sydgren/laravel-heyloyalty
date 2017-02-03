@@ -1,5 +1,5 @@
 # HeyLoyalty Laravel Helper
-[![Build](https://travis-ci.org/Sydgren/heyloyalty.svg?branch=develop)](https://travis-ci.org/Sydgren/heyloyalty)
+[![Build](https://travis-ci.org/hughwilly/heyloyalty.svg?branch=develop)](https://travis-ci.org/hughwilly/heyloyalty)
 
 Sydgren\HeyLoyalty is a package for Laravel 5.X that allows easy management of a HeyLoyalty member list.
 
