@@ -1,12 +1,12 @@
 <?php
-namespace Sydgren\HeyLoyalty\Facades;
+namespace Hughwilly\HeyLoyalty\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
  * HeyLoyalty API Client Facade.
  *
- * @package Sydgren\HeyLoyalty\Facades
+ * @package Hughwilly\HeyLoyalty\Facades
  */
 class HeyLoyalty extends Facade
 {

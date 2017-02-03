@@ -1,10 +1,10 @@
 {
-  "name" : "sydgren/heyloyalty",
-  "description" : "Client library for HeyLoyalty for Laravel",
+  "name" : "hughwilly/heyloyalty",
+  "description" : "Helper for Laravel 5 that allows easy management of a HeyLoyalty member list.",
   "require" : {
     "php" : "^5.6|^7.0",
     "heyloyalty/hl-phpclient" : "^1.5.0",
-    "illuminate/support" : "5.0.*|5.1.*|5.2.*|5.3.*",
+    "illuminate/support" : "^5.0",
     "nesbot/carbon" : "~1.21"
   },
   "require-dev" : {
@@ -14,8 +14,8 @@
   "minimum-stability" : "dev",
   "autoload" : {
     "psr-4" : {
-      "Sydgren\\HeyLoyalty\\" : "src/",
-      "Sydgren\\HeyLoyalty\\Test\\" : "tests/"
+      "Hughwilly\\HeyLoyalty\\" : "src/",
+      "Hughwilly\\HeyLoyalty\\Test\\" : "tests/"
     }
   },
   "authors" : [ {

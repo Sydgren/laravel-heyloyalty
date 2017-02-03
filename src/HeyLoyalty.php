@@ -1,16 +1,17 @@
 <?php
-namespace Sydgren\HeyLoyalty;
+namespace Hughwilly\HeyLoyalty;
 
-use Illuminate\Support\Facades\Config;
+use Illuminate\Contracts\Config\Repository;
+use Hughwilly\HeyLoyalty\Contracts\HeyLoyalty as HeyLoyaltyContract;
 use Phpclient\HLClient;
 use Phpclient\HLMembers;
 
 /**
  * HeyLoyalty API Client
  *
- * @package Sydgren\HeyLoyalty
+ * @package Hughwilly\HeyLoyalty
  */
-class HeyLoyalty
+class HeyLoyalty implements HeyLoyaltyContract
 {
     /**
      * API key
@@ -37,22 +38,32 @@ class HeyLoyalty
     protected $members;
 
     /**
-     * HeyLoyalty API Client constructor.
+     * @var \Illuminate\Contracts\Config\Repository
      */
-    public function __construct()
-    {
-        $this->apiKey = Config::get('heyloyalty.api_key');
-        $this->secret = Config::get('heyloyalty.secret');
+    protected $config;
 
-        $this->setupClient();
+    /**
+     * HeyLoyalty API Client constructor.
+     *
+     * @param \Illuminate\Contracts\Config\Repository $config
+     */
+    public function __construct(Repository $config)
+    {
+        $this->setupClient(
+            $config->get('heyloyalty.api_key'),
+            $config->get('heyloyalty.secret')
+        );
     }
 
     /**
      * Sets up the HeyLoyalty Client.
+     *
+     * @param string $apiKey
+     * @param string $secret
      */
-    private function setupClient()
+    protected function setupClient($apiKey, $secret)
     {
-        $this->client = new HLClient($this->apiKey, $this->secret);
+        $this->client = new HLClient($apiKey, $secret);
         $this->members = new HLMembers($this->client);
     }
 
