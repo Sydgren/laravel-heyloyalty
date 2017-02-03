@@ -1,9 +1,9 @@
 <?php
-namespace Sydgren\HeyLoyalty;
+namespace Hughwilly\HeyLoyalty;
 
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Config;
-use Sydgren\HeyLoyalty\Facades\HeyLoyalty;
+use Hughwilly\HeyLoyalty\Facades\HeyLoyalty;
 
 trait SubscribesToHeyLoyalty
 {
@@ -30,7 +30,7 @@ trait SubscribesToHeyLoyalty
 
         $memberData = [];
 
-        foreach ($this->heyloyalty_ields as $modelKey => $hlKey) {
+        foreach ($this->heyloyalty_fields as $modelKey => $hlKey) {
             $memberData[$hlKey] = $this->$modelKey;
         }
 

@@ -1,7 +1,7 @@
 # HeyLoyalty Laravel Helper
 [![Build](https://travis-ci.org/hughwilly/heyloyalty.svg?branch=develop)](https://travis-ci.org/hughwilly/heyloyalty)
 
-Sydgren\HeyLoyalty is a package for Laravel 5.X that allows easy management of a HeyLoyalty member list.
+This is a package for Laravel 5 that allows easy management of a HeyLoyalty member list.
 
 ### Features
 * Subscribe
@@ -14,19 +14,19 @@ Sydgren\HeyLoyalty is a package for Laravel 5.X that allows easy management of a
 In your `config/app.php` file, add this line to your list of service providers:
 
 ```
-Sydgren\HeyLoyalty\HeyLoyaltyProvider::class,
+Hughwilly\HeyLoyalty\HeyLoyaltyProvider::class,
 ```
 
 In the same file, add this line to your list of facades:
 
 ```
-'HeyLoyalty' => Sydgren\HeyLoyalty\Facades\HeyLoyalty::class
+'HeyLoyalty' => Hughwilly\HeyLoyalty\Facades\HeyLoyalty::class
 ```
 
 Finally, to get the config file, run this artisan command:
 
 ```
-php artisan vendor:publish --provider="Sydgren\HeyLoyalty\HeyLoyaltyServiceProvider" --tag="config"
+php artisan vendor:publish --provider="Hughwilly\HeyLoyalty\HeyLoyaltyServiceProvider" --tag="config"
 ```
 
 ## Configuration
@@ -46,7 +46,7 @@ Apply this trait to by adding the following line at the top of the class:
 ```
 class User extends Model
 {
-    use Sydgren\HeyLoyalty\Traits\SubscribesToHeyLoyalty;
+    use Hughwilly\HeyLoyalty\Traits\SubscribesToHeyLoyalty;
     
     ...
 }
