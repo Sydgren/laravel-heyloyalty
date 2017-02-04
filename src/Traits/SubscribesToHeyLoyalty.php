@@ -1,9 +1,9 @@
 <?php
 namespace Hughwilly\HeyLoyalty;
 
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Config;
 use Hughwilly\HeyLoyalty\Facades\HeyLoyalty;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Log;
 
 trait SubscribesToHeyLoyalty
 {
@@ -76,13 +76,13 @@ trait SubscribesToHeyLoyalty
      */
     private function getHLMemberId()
     {
-        $members = HeyLoyalty::findByEmail($this->email);
+        $members = HeyLoyalty::findByEmail(Config::get('heyloyalty.list_id'), $this->email);
 
         if (! $members) {
             return false;
         }
 
-        return $members[0]->id;
+        return $members[0]['id'];
     }
 
     /**

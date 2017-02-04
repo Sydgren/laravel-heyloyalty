@@ -17,6 +17,6 @@ class HeyLoyalty extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'HeyLoyalty';
+        return 'heyloyalty';
     }
 }

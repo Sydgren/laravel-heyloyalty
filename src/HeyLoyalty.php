@@ -1,8 +1,8 @@
 <?php
 namespace Hughwilly\HeyLoyalty;
 
-use Illuminate\Contracts\Config\Repository;
 use Hughwilly\HeyLoyalty\Contracts\HeyLoyalty as HeyLoyaltyContract;
+use Illuminate\Contracts\Config\Repository;
 use Phpclient\HLClient;
 use Phpclient\HLMembers;
 
@@ -107,17 +107,18 @@ class HeyLoyalty implements HeyLoyaltyContract
      *
      * @param $listId
      * @param $email
-     * @return array
+     *
+     * @return array|null
      */
     public function findByEmail($listId, $email)
     {
-        $members = json_decode($this->members->getMemberByEmail($listId, $email)['response']);
+        $response = json_decode($this->members->getMemberByEmail($listId, $email)['response'], true);
 
-        if (! $members->total) {
-            return [];
+        if (array_has($response, 'code') && $response['code'] !== '200') {
+            return false;
         }
 
-        return $members->members;
+        return $response['members'];
     }
 
     /**
@@ -125,12 +126,17 @@ class HeyLoyalty implements HeyLoyaltyContract
      *
      * @param $listId
      * @param $memberId
-     * @return object
+     *
+     * @return array|null
      */
     public function find($listId, $memberId)
     {
-        $member = json_decode($this->members->getMemberByEmail($listId, $memberId)['response']);
+        $response = json_decode($this->members->getMember($listId, $memberId)['response'], true);
 
-        return $member;
+        if (array_has($response, 'code') && $response['code'] !== '200') {
+            return false;
+        }
+
+        return $response;
     }
 }
