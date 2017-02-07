@@ -9,14 +9,22 @@
   },
   "require-dev" : {
     "mockery/mockery" : "^0.9.5",
-    "phpunit/phpunit" : "^5.6"
+    "phpunit/phpunit" : "^5.6",
+    "laravel/laravel" : "dev-develop"
   },
   "minimum-stability" : "dev",
   "autoload" : {
     "psr-4" : {
-      "Hughwilly\\HeyLoyalty\\" : "src/",
-      "Hughwilly\\HeyLoyalty\\Test\\" : "tests/"
+      "Hughwilly\\HeyLoyalty\\": "src/"
     }
+  },
+  "autoload-dev" : {
+    "psr-4" : {
+      "Hughwilly\\HeyLoyalty\\Tests\\" : "tests/"
+    },
+    "files" : [
+      "vendor/laravel/framework/src/Illuminate/Foundation/helpers.php"
+    ]
   },
   "authors" : [ {
     "name" : "Henrik Nordquist",

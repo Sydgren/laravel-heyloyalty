@@ -11,13 +11,13 @@ This is a package for Laravel 5 that allows easy management of a HeyLoyalty memb
 * Check subscription status
 
 ## Installation
-In your `config/app.php` file, add this line to your list of service providers:
+In your `config/app.php` file, add this line to the list of providers:
 
 ```
 Hughwilly\HeyLoyalty\HeyLoyaltyProvider::class,
 ```
 
-In the same file, add this line to your list of facades:
+Optionally, you can add this line to the list of aliases:
 
 ```
 'HeyLoyalty' => Hughwilly\HeyLoyalty\Facades\HeyLoyalty::class
@@ -33,10 +33,16 @@ php artisan vendor:publish --provider="Hughwilly\HeyLoyalty\HeyLoyaltyServicePro
 The default config file looks like this:
 
 ```
-TODO
+<?php
+
+return [
+    'api_key' => null,
+    'secret' => null,
+    'list_id' => null
+];
 ```
 
-...
+Get your `api_key` and `secret` from https://app.heyloyalty.com/settings/account and the `list_id` from the list you want to manage.
 
 ## Usage
 This package includes a trait (`SubscribesToHeyLoyalty`) to apply to your User model.

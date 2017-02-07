@@ -1,22 +1,19 @@
 <?php
-namespace Hughwilly\HeyLoyalty;
+namespace Hughwilly\HeyLoyalty\Traits;
 
 use Hughwilly\HeyLoyalty\Facades\HeyLoyalty;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Log;
 
+/**
+ * Class SubscribesToHeyLoyalty
+ *
+ * @property array $heyloyalty_fields Field mapping. Model field => HeyLoyalty field
+ *
+ * @package Hughwilly\HeyLoyalty\Traits
+ */
 trait SubscribesToHeyLoyalty
 {
-    /**
-     * Field mapping array.
-     * Model field name => HeyLoyalty field name
-     *
-     * @var array
-     */
-    protected $heyloyalty_fields = [
-        'email' => 'email'
-    ];
-
     /**
      * Subscribe the user to HeyLoyalty.
      *
@@ -125,6 +122,25 @@ trait SubscribesToHeyLoyalty
         HeyLoyalty::update(Config::get('heyloyalty.list_id'), $id, [$field => $value]);
 
         Log::info('HeyLoyalty member updated', [$this->email, [$field => $value]]);
+
+        return true;
+    }
+
+    /**
+     * Update a single field in HeyLoyalty for the user.
+     *
+     * @param array $data
+     * @return bool
+     */
+    public function updateCustomFields(array $data)
+    {
+        if (! $id = $this->getHLMemberId()) {
+            return false;
+        }
+
+        HeyLoyalty::update(Config::get('heyloyalty.list_id'), $id, $data);
+
+        Log::info('HeyLoyalty member updated', [$this->email, $data]);
 
         return true;
     }
